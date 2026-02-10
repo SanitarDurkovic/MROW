@@ -31,9 +31,6 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
         SubscribeLocalEvent<VisualOrganMarkingsComponent, AfterAutoHandleStateEvent>(OnMarkingsState);
 
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<HumanoidLayerVisibilityChangedEvent>>(OnMarkingsChangedVisibility);
-
-        Subs.CVar(_cfg, CCVars.AccessibilityClientCensorNudity, OnCensorshipChanged, true);
-        Subs.CVar(_cfg, CCVars.AccessibilityServerCensorNudity, OnCensorshipChanged, true);
     }
 
     private void OnCensorshipChanged(bool value)
@@ -142,10 +139,6 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
                 yield return marking;
             }
         }
-
-        var censorNudity = _cfg.GetCVar(CCVars.AccessibilityClientCensorNudity) || _cfg.GetCVar(CCVars.AccessibilityServerCensorNudity);
-        if (!censorNudity)
-            yield break;
 
         var group = _prototype.Index(ent.Comp.MarkingData.Group);
         foreach (var layer in ent.Comp.MarkingData.Layers)

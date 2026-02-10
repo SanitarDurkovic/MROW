@@ -1,5 +1,4 @@
 - type: markingsGroup
-  parent: Undergarments
   id: Tajaran
   limits:
     enum.HumanoidVisualLayers.Hair:
@@ -50,14 +49,6 @@
     enum.HumanoidVisualLayers.RFoot:
       limit: 2
       required: false
-    enum.HumanoidVisualLayers.UndergarmentTop:
-      limit: 1
-      required: false
-      nudityDefault: [ UndergarmentTopTanktopVulpkanin ]
-    enum.HumanoidVisualLayers.UndergarmentBottom:
-      limit: 1
-      required: false
-      nudityDefault: [ UndergarmentBottomBoxersVulpkanin ]
 
 - type: entity
   parent: BaseSpeciesAppearance
@@ -91,6 +82,18 @@
   - type: Inventory
     speciesId: corvaxtajaran
     femaleDisplacements:
+      # LP edit start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit-female
+      # LP edit end
       jumpsuit:
         sizeMaps:
           32:
@@ -102,6 +105,18 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
     displacements:
+      # LP edit start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      # LP edit end
       jumpsuit:
         sizeMaps:
           32:

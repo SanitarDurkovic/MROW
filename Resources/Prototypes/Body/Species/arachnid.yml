@@ -1,5 +1,4 @@
 - type: markingsGroup
-  parent: Undergarments
   id: Arachnid
   onlyGroupWhitelisted: true
   limits:

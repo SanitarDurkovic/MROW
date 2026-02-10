@@ -1,5 +1,4 @@
 - type: markingsGroup
-  parent: Undergarments
   id: Moth
   onlyGroupWhitelisted: true
   limits:
@@ -56,6 +55,18 @@
   - type: Inventory
     speciesId: moth
     femaleDisplacements:
+      # LP edit start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-female
+      # LP edit end
       jumpsuit:
         sizeMaps:
           32:
@@ -82,6 +93,18 @@
             sprite: Mobs/Species/Moth/displacement.rsi
             state: shoes
     displacements:
+      # LP edit start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-male
+      # LP edit end
       jumpsuit:
         sizeMaps:
           32:

@@ -66,7 +66,7 @@ namespace Content.Shared.Preferences
         }
 
         // WWDP EDIT START
-        public PlayerPreferences WithCharacters(IEnumerable<KeyValuePair<int, ICharacterProfile>> characters) =>
+        public PlayerPreferences WithCharacters(IEnumerable<KeyValuePair<int, HumanoidCharacterProfile>> characters) =>
             new(characters, SelectedCharacterIndex, AdminOOCColor, ConstructionFavorites, CustomGhost);
 
         public PlayerPreferences WithSlot(int slot) =>

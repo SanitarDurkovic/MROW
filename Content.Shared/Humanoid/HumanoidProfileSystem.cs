@@ -1,3 +1,6 @@
+using System.Numerics;
+using Content.Shared._EE.HeightAdjust;
+using Content.Shared._GoobStation.Barks;
 using Content.Shared.Corvax.TTS;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Prototypes;
@@ -12,16 +15,18 @@ public sealed class HumanoidProfileSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly GrammarSystem _grammar = default!;
+    [Dependency] private readonly HeightAdjustSystem _heightAdjust = default!; // Goobstation: port EE height/width sliders
 
     // Corvax-TTS-Start
-    public const string DefaultVoice = "Garithos";
+    public const string DefaultVoice = "nord";
     public static readonly Dictionary<Sex, string> DefaultSexVoice = new()
     {
-        {Sex.Male, "Garithos"},
-        {Sex.Female, "Maiev"},
-        {Sex.Unsexed, "Myron"},
+        {Sex.Male, "nord"},
+        {Sex.Female, "amina"},
+        {Sex.Unsexed, "alyx"},
     };
     // Corvax-TTS-End
+    public static readonly ProtoId<BarkPrototype> DefaultBarkVoice = "Alto"; // Goob Station - Barks
 
     public override void Initialize()
     {
@@ -29,6 +34,68 @@ public sealed class HumanoidProfileSystem : EntitySystem
 
         SubscribeLocalEvent<HumanoidProfileComponent, ExaminedEvent>(OnExamined);
     }
+
+    // begin Goobstation: port EE height/width sliders
+
+    /// <summary>
+    ///     Set the height of a humanoid mob
+    /// </summary>
+    /// <param name="uid">The humanoid mob's UID</param>
+    /// <param name="height">The height to set the mob to</param>
+    /// <param name="sync">Whether to immediately synchronize this to the humanoid mob, or not</param>
+    /// <param name="humanoid">Humanoid component of the entity</param>
+    public void SetHeight(EntityUid uid, float height, bool sync = true, HumanoidProfileComponent? humanoid = null)
+    {
+        if (!Resolve(uid, ref humanoid) || MathHelper.CloseTo(humanoid.Height, height, 0.001f))
+            return;
+
+        var species = _prototype.Index(humanoid.Species);
+        humanoid.Height = Math.Clamp(height, species.MinHeight, species.MaxHeight);
+
+        if (sync)
+            Dirty(uid, humanoid);
+    }
+
+    /// <summary>
+    ///     Set the width of a humanoid mob
+    /// </summary>
+    /// <param name="uid">The humanoid mob's UID</param>
+    /// <param name="width">The width to set the mob to</param>
+    /// <param name="sync">Whether to immediately synchronize this to the humanoid mob, or not</param>
+    /// <param name="humanoid">Humanoid component of the entity</param>
+    public void SetWidth(EntityUid uid, float width, bool sync = true, HumanoidProfileComponent? humanoid = null)
+    {
+        if (!Resolve(uid, ref humanoid) || MathHelper.CloseTo(humanoid.Width, width, 0.001f))
+            return;
+
+        var species = _prototype.Index(humanoid.Species);
+        humanoid.Width = Math.Clamp(width, species.MinWidth, species.MaxWidth);
+
+        if (sync)
+            Dirty(uid, humanoid);
+    }
+
+    /// <summary>
+    ///     Set the scale of a humanoid mob
+    /// </summary>
+    /// <param name="uid">The humanoid mob's UID</param>
+    /// <param name="scale">The scale to set the mob to</param>
+    /// <param name="sync">Whether to immediately synchronize this to the humanoid mob, or not</param>
+    /// <param name="humanoid">Humanoid component of the entity</param>
+    public void SetScale(EntityUid uid, Vector2 scale, bool sync = true, HumanoidProfileComponent? humanoid = null)
+    {
+        if (!Resolve(uid, ref humanoid))
+            return;
+
+        var species = _prototype.Index(humanoid.Species);
+        humanoid.Height = Math.Clamp(scale.Y, species.MinHeight, species.MaxHeight);
+        humanoid.Width = Math.Clamp(scale.X, species.MinWidth, species.MaxWidth);
+
+        if (sync)
+            Dirty(uid, humanoid);
+    }
+
+    // end Goobstation: port EE height/width sliders
 
     public void ApplyProfileTo(Entity<HumanoidProfileComponent?> ent, HumanoidCharacterProfile profile)
     {
@@ -46,6 +113,20 @@ public sealed class HumanoidProfileSystem : EntitySystem
             _TTSComponent.VoicePrototypeId = profile.Voice;
         }
         // Corvax-TTS-end
+        // Goob Station - Barks start
+        var ev = new ApplyBarkVoiceEvent(profile.BarkVoice);
+        RaiseLocalEvent(ent, ref ev);
+        // Goob Station - Barks end
+        // begin Goobstation: port EE height/width sliders
+        var species = _prototype.Index(profile.Species);
+
+        if (profile.Height <= 0 || profile.Width <= 0)
+            SetScale(ent, new Vector2(species.DefaultWidth, species.DefaultHeight), true, ent.Comp);
+        else
+            SetScale(ent, new Vector2(profile.Width, profile.Height), true, ent.Comp);
+
+        _heightAdjust.SetScale(ent, new Vector2(profile.Width, profile.Height));
+        // end Goobstation: port EE height/width sliders
         Dirty(ent);
 
         var sexChanged = new SexChangedEvent(ent.Comp.Sex, profile.Sex);
@@ -102,3 +183,6 @@ public sealed class HumanoidProfileSystem : EntitySystem
         return Loc.GetString("identity-age-old");
     }
 }
+
+[ByRefEvent]
+public record struct ApplyBarkVoiceEvent(string BarkVoice);

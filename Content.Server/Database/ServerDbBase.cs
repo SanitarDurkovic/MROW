@@ -345,7 +345,7 @@ namespace Content.Server.Database
                 loadouts[role.RoleName] = loadout;
             }
 
-            var barkVoice = profile.BarkVoice ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
+            var barkVoice = profile.BarkVoice ?? HumanoidProfileSystem.DefaultBarkVoice; // Goob Station - Barks
 
             return new HumanoidCharacterProfile(
                 profile.CharacterName,

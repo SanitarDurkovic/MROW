@@ -1,5 +1,4 @@
 - type: markingsGroup
-  parent: Undergarments
   id: Reptilian
   onlyGroupWhitelisted: true
   limits:
@@ -59,6 +58,18 @@
   - type: Inventory
     speciesId: reptilian
     femaleDisplacements:
+      # LP edit start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit-female
+      # LP edit end
       jumpsuit:
         sizeMaps:
           32:
@@ -82,6 +93,18 @@
             state: shoes
       # Corvax-Displacements-End
     displacements:
+      # LP edit start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      # LP edit end
       head:
         sizeMaps:
           32:

@@ -1,4 +1,6 @@
-using System.Numerics;
+using Content.Shared._ERPModule.Data;
+using Content.Shared._Funkystation.Records;
+using Content.Shared._GoobStation.Barks;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -64,8 +66,32 @@ public sealed partial class HumanoidCharacterProfileV1
     [DataField] //Corvax-TTS
     public string Voice;
 
+    // LP edit start
+    [DataField]
+    public ErpStatus ErpStatus;
+    // LP edit end
+
     [DataField]
     public int Age;
+
+    [DataField] // Goob Station - Barks
+    public ProtoId<BarkPrototype> BarkVoice { get; set; } = HumanoidProfileSystem.DefaultBarkVoice; // Goob Station - Barks
+
+    // begin Goobstation: port EE height/width sliders
+
+    /// <summary>
+    ///     The height of this humanoid.
+    /// </summary>
+    [DataField]
+    public float Height = 1f;
+
+    /// <summary>
+    ///     The width of this humanoid.
+    /// </summary>
+    [DataField]
+    public float Width = 1f;
+
+    // end Goobstation: port EE height/width sliders
 
     [DataField]
     public Sex Sex;
@@ -82,9 +108,14 @@ public sealed partial class HumanoidCharacterProfileV1
     [DataField]
     public PreferenceUnavailableMode PreferenceUnavailable;
 
+    // CD edit start - character records
+    [DataField]
+    public PlayerProvidedCharacterRecords? CdCharacterRecords;
+    // CD edit end - character records
+
     public HumanoidCharacterProfile ToV2()
     {
-        return new(Name, FlavorText, Species, Voice, Age, Sex, Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts);
+        return new(Name, FlavorText, Species, Voice, Height, Width, Age, Sex, Gender, ErpStatus, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts, BarkVoice, CdCharacterRecords); // LP edit
     }
 }
 

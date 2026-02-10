@@ -1,6 +1,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Corvax.Interfaces.Shared;
 using Content.Shared._ERPModule.Data; // LP edit
 using Content.Shared.CCVar;
 using Content.Shared.Corvax.TTS;
@@ -88,7 +89,7 @@ namespace Content.Shared.Preferences
         public string Voice { get; set; } = HumanoidProfileSystem.DefaultVoice;
 
         [DataField] // Goob Station - Barks
-        public ProtoId<BarkPrototype> BarkVoice { get; set; } = SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
+        public ProtoId<BarkPrototype> BarkVoice { get; set; } = HumanoidProfileSystem.DefaultBarkVoice; // Goob Station - Barks
 
         [DataField]
         public int Age { get; set; } = 18;
@@ -962,7 +963,7 @@ namespace Content.Shared.Preferences
             return dataNode;
         }
 
-        public static HumanoidCharacterProfile FromStream(Stream stream, ICommonSession session, ISerializationManager? serialization = null, IConfigurationManager? configuration = null)
+        public static HumanoidCharacterProfile FromStream(Stream stream, ICommonSession session, List<string> sponsorPrototypes, int sponsorTier = 0, string uuid = "", ISerializationManager? serialization = null, IConfigurationManager? configuration = null)   //LP edit)
         {
             IoCManager.Resolve(ref serialization);
             IoCManager.Resolve(ref configuration);
@@ -989,10 +990,7 @@ namespace Content.Shared.Preferences
             }
 
             var collection = IoCManager.Instance;
-            // Corvax-Sponsors-Start
-            var sponsorPrototypes = IoCManager.Resolve<ISharedSponsorsManager>().TryGetServerPrototypes(session.UserId, out var prototypes) ? prototypes.ToArray() : [];
-            profile.EnsureValid(session, collection!, sponsorPrototypes);
-            // Corvax-Sponsors-End
+            profile.EnsureValid(session, collection!, sponsorPrototypes.ToArray(), sponsorTier, uuid);  //LP edit
             return profile;
         }
     }
