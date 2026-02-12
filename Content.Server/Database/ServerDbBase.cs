@@ -27,8 +27,8 @@ using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 using Content.Shared._ERPModule.Data; // LP edit
 using Content.Shared._White.CustomGhostSystem;  //WWDP edit
-using Content.Server._Funkystation.Records; // CD - Character Records
-using Content.Shared._Funkystation.Records; // CD - Character Records
+using Content.Server._FunkyStation.Records; // CD - Character Records
+using Content.Shared._FunkyStation.Records; // CD - Character Records
 
 namespace Content.Server.Database
 {

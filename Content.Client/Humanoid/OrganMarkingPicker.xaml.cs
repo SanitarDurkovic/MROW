@@ -69,13 +69,6 @@ public sealed partial class OrganMarkingPicker : Control
             var allMarkings =
                 _markingsModel.EnforceGroupAndSexRestrictions ? _marking.MarkingsByLayerAndGroupAndSex(layer, _group, organProfileData.Sex) : _marking.MarkingsByLayer(layer);
 
-            // Corvax-Sponsors-Start
-            var sponsorPrototypes = SponsorSimpleManager.GetMarkings(); //LP edit
-            allMarkings = allMarkings
-                .Where(m => !m.Value.SponsorOnly || sponsorPrototypes.Contains(m.Key))
-                .ToDictionary(m => m.Key, m => m.Value);
-            // Corvax-Sponsors-End
-
             if (allMarkings.Count == 0)
                 continue;
 

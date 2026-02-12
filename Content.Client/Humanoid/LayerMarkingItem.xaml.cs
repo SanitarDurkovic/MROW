@@ -13,6 +13,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Corvax.Interfaces.Shared;
 using Content.Client._LP.Sponsors; // LP edit
+using static Content.Client.Corvax.SponsorOnlyHelpers; // Corvax-Sponsors
 
 namespace Content.Client.Humanoid;
 
@@ -96,6 +97,7 @@ public sealed partial class LayerMarkingItem : BoxContainer, ISearchableControl
         if (_markingPrototype.SponsorOnly && _interactive)
         {
             SelectButton.Disabled = !SponsorSimpleManager.GetMarkings().Contains(_markingPrototype.ID); //LP edit
+            SelectButton.Text += GetSponsorOnlySuffix();
         }
         // Corvax-Sponsors-End
     }

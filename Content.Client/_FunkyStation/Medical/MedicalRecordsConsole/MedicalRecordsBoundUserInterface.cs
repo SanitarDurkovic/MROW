@@ -1,9 +1,9 @@
-using Content.Client._Funkystation.Medical.MedicalRecordsConsole.UI;
-using Content.Shared._Funkystation.Medical.MedicalRecords;
+using Content.Client._FunkyStation.Medical.MedicalRecordsConsole.UI;
+using Content.Shared._FunkyStation.Medical.MedicalRecords;
 using Content.Shared.StationRecords;
 using JetBrains.Annotations;
 
-namespace Content.Client._Funkystation.Medical.MedicalRecordsConsole;
+namespace Content.Client._FunkyStation.Medical.MedicalRecordsConsole;
 
 [UsedImplicitly]
 public sealed class MedicalRecordsBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)

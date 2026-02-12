@@ -2,7 +2,7 @@ using System.Linq;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Funkystation.Records;
+namespace Content.Shared._FunkyStation.Records;
 
 /// <summary>
 /// Contains Cosmatic Drift records that can be changed in the character editor. This is stored on the character's profile.
@@ -105,7 +105,7 @@ public sealed partial class PlayerProvidedCharacterRecords
             insuranceType: 0,
             medicalInfo: [],
             bloodType: 0,
-            postmortemInstructions: "Return home"
+            postmortemInstructions: "Вернуть домой"
         );
     }
 

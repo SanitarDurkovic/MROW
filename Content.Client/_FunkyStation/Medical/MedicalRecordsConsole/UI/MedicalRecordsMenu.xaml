@@ -110,7 +110,7 @@
                                         <TextureRect
                                             Margin="-8,-2,0,0"
                                             Name="GIButtonArrow"
-                                            TexturePath="/Textures/_Funkystation/Interface/StyleFunky/arrow_up.png"
+                                            TexturePath="/Textures/_FunkyStation/Interface/StyleFunky/arrow_up.png"
                                             VerticalAlignment="Center" />
                                     </Button>
                                 </BoxContainer>
@@ -215,7 +215,7 @@
                                         <TextureRect
                                             Margin="-8,-2,0,0"
                                             Name="MIButtonArrow"
-                                            TexturePath="/Textures/_Funkystation/Interface/StyleFunky/arrow_up.png"
+                                            TexturePath="/Textures/_FunkyStation/Interface/StyleFunky/arrow_up.png"
                                             VerticalAlignment="Center" />
                                     </Button>
                                 </BoxContainer>
@@ -271,7 +271,7 @@
                                             <TextureRect
                                                 Margin="-8,-2,0,0"
                                                 Name="ARButtonArrow"
-                                                TexturePath="/Textures/_Funkystation/Interface/StyleFunky/arrow_up.png"
+                                                TexturePath="/Textures/_FunkyStation/Interface/StyleFunky/arrow_up.png"
                                                 VerticalAlignment="Center" />
                                         </Button>
                                     </BoxContainer>

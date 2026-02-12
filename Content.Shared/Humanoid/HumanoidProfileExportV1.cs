@@ -1,5 +1,5 @@
 using Content.Shared._ERPModule.Data;
-using Content.Shared._Funkystation.Records;
+using Content.Shared._FunkyStation.Records;
 using Content.Shared._GoobStation.Barks;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;

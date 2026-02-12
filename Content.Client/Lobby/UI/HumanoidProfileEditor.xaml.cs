@@ -47,8 +47,8 @@ using Content.Shared._GoobStation.CCVar;
 
 // LP edit end
 // Begin CD - Character Records
-using Content.Client._Funkystation.Medical.Records.UI;
-using Content.Shared._Funkystation.Records;
+using Content.Client._FunkyStation.Medical.Records.UI;
+using Content.Shared._FunkyStation.Records;
 // End CD - Character Records
 
 namespace Content.Client.Lobby.UI

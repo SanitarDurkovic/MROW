@@ -1,7 +1,7 @@
-using Content.Shared._Funkystation.Medical.MedicalRecords;
+using Content.Shared._FunkyStation.Medical.MedicalRecords;
 using Content.Shared.StationRecords;
 
-namespace Content.Server._Funkystation.Medical.MedicalRecords;
+namespace Content.Server._FunkyStation.Medical.MedicalRecords;
 
 [RegisterComponent]
 public sealed partial class MedicalRecordsConsoleComponent : Component

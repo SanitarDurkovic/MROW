@@ -1,15 +1,15 @@
-using Content.Server._Funkystation.Records;
+using Content.Server._FunkyStation.Records;
 using Content.Server.Station.Systems;
 using Content.Server.StationRecords.Systems;
 using Content.Server.StationRecords;
-using Content.Shared._Funkystation.Medical.MedicalRecords;
+using Content.Shared._FunkyStation.Medical.MedicalRecords;
 using Content.Shared.CriminalRecords;
 using Content.Shared.Security;
 using Content.Shared.StationRecords;
-using Content.Shared._Funkystation.Records;
+using Content.Shared._FunkyStation.Records;
 using Robust.Server.GameObjects;
 
-namespace Content.Server._Funkystation.Medical.MedicalRecords;
+namespace Content.Server._FunkyStation.Medical.MedicalRecords;
 
 public sealed class MedicalRecordsConsoleSystem : EntitySystem
 {

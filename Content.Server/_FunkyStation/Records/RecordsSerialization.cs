@@ -1,10 +1,10 @@
 using Content.Server.Database;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
-using Content.Shared._Funkystation.Records;
+using Content.Shared._FunkyStation.Records;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._Funkystation.Records;
+namespace Content.Server._FunkyStation.Records;
 
 public static class RecordsSerialization
 {

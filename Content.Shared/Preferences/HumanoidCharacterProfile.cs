@@ -22,7 +22,7 @@ using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
-using Content.Shared._Funkystation.Records; // CD - Character Records
+using Content.Shared._FunkyStation.Records; // CD - Character Records
 using Robust.Shared;
 using YamlDotNet.RepresentationModel;
 

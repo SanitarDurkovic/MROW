@@ -1,8 +1,8 @@
-using Content.Shared._Funkystation.Records;
+using Content.Shared._FunkyStation.Records;
 using Content.Shared.StationRecords;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Funkystation.Medical.MedicalRecords;
+namespace Content.Shared._FunkyStation.Medical.MedicalRecords;
 
 [Serializable, NetSerializable]
 public enum MedicalRecordsConsoleKey : byte

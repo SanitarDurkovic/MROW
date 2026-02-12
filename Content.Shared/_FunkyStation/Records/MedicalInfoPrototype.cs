@@ -1,6 +1,6 @@
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Funkystation.Records;
+namespace Content.Shared._FunkyStation.Records;
 
 [Prototype("medicalInfo"), Serializable]
 public sealed partial class MedicalInfoPrototype : IPrototype
