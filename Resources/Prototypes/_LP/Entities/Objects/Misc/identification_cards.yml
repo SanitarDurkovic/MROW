@@ -17,22 +17,22 @@
   - type: PresetIdCard
     job: LPPSecurityEnginer
 
-- type: entity
-  parent: IDCardStandard
-  id: LPPFieldMedicIDCard
-  name: field medic ID card # LP Edit
-  components:
-  # LP Edit Start
-  - type: PresetIdCard
-    job: Brigmedic
-  # LP Edit End
-  - type: Sprite
-    layers:
-    - state: default
-    - state: stripe_top
-      color: *color-security-top
-    - state: stripe_bottom
-      color: *color-security-bottom
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: FieldMedic
+# - type: entity
+#   parent: IDCardStandard
+#   id: LPPFieldMedicIDCard
+#   name: field medic ID card # LP Edit
+#   components:
+#   # LP Edit Start
+#   - type: PresetIdCard
+#     job: Brigmedic
+#   # LP Edit End
+#   - type: Sprite
+#     layers:
+#     - state: default
+#     - state: stripe_top
+#       color: *color-security-top
+#     - state: stripe_bottom
+#       color: *color-security-bottom
+#     - sprite: *icon-rsi
+#       offset: *icon-offset
+#       state: FieldMedic
